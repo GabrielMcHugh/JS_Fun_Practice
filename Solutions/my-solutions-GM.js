@@ -1,11 +1,27 @@
 // Write a function identity that takes an argument and returns that argument
-function identity(param) {
-	return param;
+function identity(x) {
+	return x;
 }
 console.log(
-	"identity(1) returns:", identity(1) + "\n",
-	"identity(5) returns:", identity(5) + "\n")
+	"identity(1) returns:", identity(1), "\n" +
+	"identity(-1) returns:", identity(-1))
 
+//Write a binary function addb that takes two numbers and returns their sum
+function addb(a, b) {
+	return a + b;
+}
+console.log(
+	"addb(1,2) returns:", addb(1,2), "\n" +
+	"addb(4,-7) returns:", addb(4,-7))
+
+//Write a binary function subb that takes two numbers and returns their difference
+function subb(a,b) {
+	return a - b;
+}
+
+console.log(
+	"subb(2,1) returns:", subb(2,1), "\n" +
+	"subb(4,7) returns:", subb(4,7))
 
 //Write a function max that is generalised for any amount of arguments
 
