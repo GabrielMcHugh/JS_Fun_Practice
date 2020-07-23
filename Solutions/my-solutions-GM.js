@@ -1,3 +1,12 @@
+// Write a function identity that takes an argument and returns that argument
+function identity(param) {
+	return param;
+}
+console.log(
+	"identity(1) returns:", identity(1) + "\n",
+	"identity(5) returns:", identity(5) + "\n")
+
+
 //Write a function max that is generalised for any amount of arguments
 
 const max = (...nums) => {return nums.reduce((a,b) => a > b ? a : b);}
