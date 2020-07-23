@@ -23,6 +23,15 @@ console.log(
 	"subb(2,1) returns:", subb(2,1), "\n" +
 	"subb(4,7) returns:", subb(4,7))
 
+//Write a binary function mulb that takes two numbers and returns their product
+function mulb(a,b) {
+	return a*b;
+}
+
+console.log(
+	"mulb(2,1) returns:", mulb(2,1), "\n" +
+	"mulb(4,7) returns:", mulb(4,7))
+
 //Write a function max that is generalised for any amount of arguments
 
 const max = (...nums) => {return nums.reduce((a,b) => a > b ? a : b);}
