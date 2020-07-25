@@ -16,7 +16,8 @@ console.log(
 
 //Write a binary function subb that takes two numbers and returns their difference
 function subb(a,b) {
-	return a - b;
+	if (a > b) {return a - b};
+	return b - a;
 }
 
 console.log(
@@ -91,6 +92,21 @@ const add = function assignedFunction(...nums) {
 	return nums.reduce(reducer, initialValue)
 }
 console.log("add(3,9,8,12) returns: ", add(3,9,8,12))
+
+//Write a function sub that is generalized for any amount of arguments
+/* Reusing assigned function to point out that when assigning a function
+to a variable, the function name is 'discarded' and thus can be reused*/
+const sub = function assignedFunction(...nums) {
+	function assignedFunction(accumulator, item) {
+		if (accumulator > item) {
+			return accumulator - item;
+		}
+		return item - accumulator;
+	}
+
+	return nums.reduce(assignedFunction, 0)
+}
+console.log("sub(3,9,8) returns: ", sub(3,9,8))
 
 
 //Write a function max that is generalised for any amount of arguments
