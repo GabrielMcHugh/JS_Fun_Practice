@@ -96,27 +96,69 @@ console.log("add(3,9,8,12) returns: ", add(3,9,8,12))
 //Write a function sub that is generalized for any amount of arguments
 /* Reusing assigned function to point out that when assigning a function
 to a variable, the function name is 'discarded' and thus can be reused*/
-const sub = function assignedFunction(...nums) {
-	function assignedFunction(accumulator, item) {
+const sub = function subfunction(...nums) {
+	function subfunction(accumulator, item) {
 		if (accumulator > item) {
 			return accumulator - item;
 		}
 		return item - accumulator;
 	}
 
-	return nums.reduce(assignedFunction, 0)
+	return nums.reduce(subfunction, 0)
 }
 console.log("sub(3,9,8) returns: ", sub(3,9,8))
 
+//Write a function mul that is generalized for any amount of arguments
+const mul = (...nums) => {
+	for (i = 0, sum = 1; i < nums.length; i++) {
+		sum *= nums[i]
+	}
+	return sum
+}
+console.log("mul(1,2,3) returns: ", mul(1,2,3))
+
+/*alternatively*/
+const mul = (...nums) => {
+	const reducer = (a,b) => {return a*b}
+
+	return nums.reduce(reducer)
+}
+console.log("mul(1,2,3) returns: ", mul(1,2,3))
+
+/*using an anonymous function*/
+const mul = (...nums) => {
+	return nums.reduce(function (a,b) {return a*b})
+}
+console.log("mul(1,2,4) returns: ", mul(1,2,4))
+
+/*using a anonymous arrow function*/
+const mul = (...nums) => {
+	return nums.reduce((a,b) => {return a*b})
+}
+console.log("mul(1,2,4) returns: ", mul(1,2,4))
+
+/*using a anonymous arrow function with an implicit return*/
+const mul = (...nums) => {return nums.reduce((a,b) => a*b)}
+console.log("mul(1,2,4) returns: ", mul(1,2,4))
+
+//Write a function min that is generalized for any amount of arguments
+const min = (...nums) => {return nums.reduce((a,b) => {
+	if (a<b) return a;
+	return b;
+	}
+)}
+console.log("min(4,2,3) returns: ", min(4,2,3))
+
+/*can be shortened, using the ternary operator, to...*/
+const min = (...nums) => {return nums.reduce((a,b) => a < b ? a : b)}
+console.log("min(4,2,3,1) returns: ", min(4,2,3,1))
 
 //Write a function max that is generalised for any amount of arguments
-
 const max = (...nums) => {return nums.reduce((a,b) => a > b ? a : b);}
 console.log(max(7, 73, 100, 1, 35, -1, -9, 10, 67))
 
 
 //Write a function addRecurse that is the generalised add function but uses recursion
-
 const addRecurse = (...nums) => {
 	if (nums.length < 1) //base case
 		return 0
@@ -125,7 +167,6 @@ const addRecurse = (...nums) => {
 console.log(addRecurse(1,2,3,5))
 
 // Write a function mulRecurse that is the generalized mul function but uses recursion
-
 const mulRecurse = (...nums) => {
 	if (nums.length < 1)
 		return 1;
