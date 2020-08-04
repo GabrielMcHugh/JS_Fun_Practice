@@ -155,7 +155,7 @@ console.log("min(4,2,3,1) returns: ", min(4,2,3,1))
 
 //Write a function max that is generalised for any amount of arguments
 const max = (...nums) => {return nums.reduce((a,b) => a > b ? a : b);}
-console.log(max(7, 73, 100, 1, 35, -1, -9, 10, 67))
+console.log("max(7, 73, 100, 1, 35, -1, -9, 10, 67) returns: ", max(7, 73, 100, 1, 35, -1, -9, 10, 67))
 
 
 //Write a function addRecurse that is the generalised add function but uses recursion
@@ -164,12 +164,72 @@ const addRecurse = (...nums) => {
 		return 0
 	return nums[0] + addRecurse(...nums.slice(1))
 }
-console.log(addRecurse(1,2,3,5))
+console.log("addRecurse(1,2,3,5)", addRecurse(1,2,3,5))
 
 // Write a function mulRecurse that is the generalized mul function but uses recursion
 const mulRecurse = (...nums) => {
 	if (nums.length < 1)
 		return 1;
-	return nums[0] * (mulRecurse(...nums.slice(1)))
+	return nums[0] * (mulRecurse(nums.slice(1)))
 }
-console.log(mulRecurse(1,2,3,4)) //should equal 24
+console.log("mulRecurse(1,2,3,4)", mulRecurse(1,2,3,4)) //should equal 24
+
+//Write a function minRecurse that is the generalized min function but uses recursion
+const minRecurse = (...nums) => {
+	if (nums.length < 2) //base case
+		return nums[0];
+	const recurse = minRecurse(...nums.slice(1))
+	return nums[0] < recurse ? nums[0] : recurse; //ternary operator
+}
+console.log("minRecurse(5,4,3,2)", minRecurse(5,4,3,2))
+
+
+//Write a function maxRecurse that is the generalized max function but uses recursion
+const maxRecurse = (...nums) => {
+	if (nums.length < 2) //base case
+		return nums[0];
+	const recurse = maxRecurse(...nums.slice(1))
+	return nums[0] > recurse ? nums[0] : recurse; //ternary operator
+}
+console.log("maxRecurse(4,2,3,5)", maxRecurse(4,2,3,5))
+
+//Write a function not that takes a function and returns the negation of its result
+const not = (method) => {
+	return !(method());
+}
+console.log("not(function method() {return false}) returns: ", not(function method() {return false}))
+
+//Write a function acc that takes a function and an initial value 
+//and returns a function that runs the initial function on each argument, 
+//accumulating the result
+const acc = (method, initial) => {
+	return (...args) => {
+		return args.reduce((result, current, idx) => {
+			return method(result, current, idx)	
+		}, initial)
+	}
+}
+let add_b = acc(addb, 4)
+let mul_b = acc(mulb, 4)
+console.log("let add_b = acc(addb, 4) then add_b(1, 2, 3) returns: ", add_b(1, 2, 3))
+console.log("let mul_b = acc(mulb, 4) then mul_b(2,3,4) returns: ", mul_b(2,3,4))
+
+/*not(func) ⇒ function
+[done] Write a function not that takes a function and returns the negation of its result
+
+acc(func, initial) ⇒ function
+Write a function acc that takes a function and an initial value and returns a function that runs the initial function on each argument, accumulating the result
+
+accPartial(func, start, end) ⇒ function
+Write a function accPartial that takes in a function, a start index, and an end index, and returns a function that accumulates a subset of its arguments by applying the given function to all elements between start and end.
+
+accRecurse(func, initial) ⇒ function
+Write a function accRecurse that does what acc does but uses recursion
+*/
+
+
+
+
+
+
+
