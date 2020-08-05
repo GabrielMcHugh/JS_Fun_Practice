@@ -214,19 +214,31 @@ let mul_b = acc(mulb, 4)
 console.log("let add_b = acc(addb, 4) then add_b(1, 2, 3) returns: ", add_b(1, 2, 3))
 console.log("let mul_b = acc(mulb, 4) then mul_b(2,3,4) returns: ", mul_b(2,3,4))
 
-/*not(func) ⇒ function
-[done] Write a function not that takes a function and returns the negation of its result
+// accPartial(func, start, end) ⇒ function
+// Write a function accPartial that takes in a function, 
+// a start index, and an end index, and returns a function 
+// that accumulates a subset of its arguments by applying the 
+// given function to all elements between start and end.
+const accPartial = (func, start, end) => {
+	return (...args) => {
+		return args.slice(start,end).reduce((result, current, idx) =>{
+			return func(result,current, idx)
+		})
+	}
+}
+let add_part = accPartial(addb,2,4)
+let mul_part = accPartial(mulb,1,3)
+console.log("let add_part = accPartial(addb,2,4) then add_part(1, 2, 3, 5, 6) returns: ", add_part(1, 2, 3, 5, 6))
+console.log("let mul_part = accPartial(mulb,1,3) then mul_part(2,3,4,5) returns: ", mul_part(2,3,4,5))
 
-acc(func, initial) ⇒ function
-Write a function acc that takes a function and an initial value and returns a function that runs the initial function on each argument, accumulating the result
-
-accPartial(func, start, end) ⇒ function
-Write a function accPartial that takes in a function, a start index, and an end index, and returns a function that accumulates a subset of its arguments by applying the given function to all elements between start and end.
-
-accRecurse(func, initial) ⇒ function
-Write a function accRecurse that does what acc does but uses recursion
-*/
-
+//accRecurse(func, initial) ⇒ function
+//Write a function accRecurse that does what acc does but uses recursion
+const accRecurse = (func, initial) => {
+	const recur = (...args) => {
+		//base case
+		if (a > )
+	}
+}
 
 
 
